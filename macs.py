@@ -41,6 +41,10 @@ while True:
             
             # Then send the image data
             conn.sendall(img_data)
+         elif data.startswith(b"text"):
+             text = data[5:].decode()
+             console.print(f"Typing text: {text}", style="cyan")
+             pyautogui.typewrite(text)
 
         else:
             # If data isn't "capture," interpret it as coordinates for click
